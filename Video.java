@@ -65,4 +65,18 @@ public abstract class Video {
     }
 
     public abstract int getRentedLimit();
+
+    double getCharge(double eachCharge, int daysRented, Rental rental) {
+        switch (rental.getVideo().getPriceCode()) {
+            case REGULAR:
+                eachCharge += 2;
+                if (daysRented > 2)
+                    eachCharge += (daysRented - 2) * 1.5;
+                break;
+            case NEW_RELEASE:
+                eachCharge = daysRented * 3;
+                break;
+        }
+        return eachCharge;
+    }
 }

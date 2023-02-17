@@ -58,4 +58,9 @@ public class Rental {
 		daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		return daysRented;
 	}
+
+	double calculateCharge(double eachCharge, int daysRented) {
+		return video.getCharge(eachCharge, daysRented, this);
+	}
+
 }
