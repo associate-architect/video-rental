@@ -1,11 +1,11 @@
 public class InitCommand extends Command {
-    private VRUI ui;
-    public InitCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public InitCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.init();
+        srv.init();
     }
 }

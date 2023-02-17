@@ -1,7 +1,7 @@
 public class DefaultCommand extends Command {
-    private VRUI ui;
-    public DefaultCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public DefaultCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override

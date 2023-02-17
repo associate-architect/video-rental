@@ -1,11 +1,11 @@
 public class ListCustomersCommand extends Command {
-    private VRUI ui;
-    public ListCustomersCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public ListCustomersCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.listCustomers();
+        srv.listCustomers();
     }
 }

@@ -1,11 +1,11 @@
 public class ClearRentalsCommand extends Command {
-    private VRUI ui;
-    public ClearRentalsCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public ClearRentalsCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.clearRentals();
+        srv.clearRentals();
     }
 }

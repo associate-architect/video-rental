@@ -1,11 +1,11 @@
 public class RentVideoCommand extends Command {
-    private VRUI ui;
-    public RentVideoCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public RentVideoCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.rentVideo();
+        srv.rentVideo();
     }
 }
