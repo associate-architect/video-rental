@@ -1,14 +1,14 @@
 public class RegisterCommand extends Command {
-    private VRUI ui;
+    private final VRService srv;
     private String category;
 
-    public RegisterCommand(VRUI ui, String category) {
-        this.ui = ui;
+    public RegisterCommand(VRService srv, String category) {
+        this.srv = srv;
         this.category = category;
     }
 
     @Override
     void execute() {
-        ui.register(category);
+        srv.register(category);
     }
 }

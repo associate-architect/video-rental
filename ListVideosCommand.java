@@ -1,11 +1,11 @@
 public class ListVideosCommand extends Command {
-    private VRUI ui;
-    public ListVideosCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public ListVideosCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.listVideos();
+        srv.listVideos();
     }
 }

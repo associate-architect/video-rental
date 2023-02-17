@@ -1,11 +1,11 @@
 public class ReturnVideoCommand extends Command {
-    private VRUI ui;
-    public ReturnVideoCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public ReturnVideoCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.returnVideo();
+        srv.returnVideo();
     }
 }

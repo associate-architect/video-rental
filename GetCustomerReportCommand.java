@@ -1,11 +1,11 @@
 public class GetCustomerReportCommand extends Command {
-    private VRUI ui;
-    public GetCustomerReportCommand(VRUI ui) {
-        this.ui = ui;
+    private final VRService srv;
+    public GetCustomerReportCommand(VRService srv) {
+        this.srv = srv;
     }
 
     @Override
     void execute() {
-        ui.getCustomerReport();
+        srv.getCustomerReport();
     }
 }
