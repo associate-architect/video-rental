@@ -2,18 +2,16 @@ import java.util.Date;
 
 public abstract class Video {
     private String title;
-
-    private int priceCode;
     public static final int REGULAR = 1;
     public static final int NEW_RELEASE = 2;
-
-    private int videoType;
     public static final int VHS = 1;
     public static final int CD = 2;
     public static final int DVD = 3;
 
     private Date registeredDate;
     private boolean rented;
+
+    PriceCode priceCode;
 
     public static Video createVideo(String title, int videoType, int priceCode, Date registeredDate) {
         Video video = null;
@@ -32,6 +30,22 @@ public abstract class Video {
         return video;
     }
 
+
+    void setPriceCode(int pcode) {
+        PriceCode priceCode = null;
+        switch (pcode) {
+            case REGULAR:
+                priceCode = new RegularPriceCode();
+                break;
+
+            case NEW_RELEASE:
+                priceCode = new NewReleasePriceCode();
+                break;
+        }
+
+        this.priceCode = priceCode;
+    }
+
     public Video(String title, int priceCode, Date registeredDate) {
         this.setTitle(title);
         this.setPriceCode(priceCode);
@@ -41,11 +55,7 @@ public abstract class Video {
     public abstract int getLateReturnPointPenalty();
 
     public int getPriceCode() {
-        return priceCode;
-    }
-
-    public void setPriceCode(int priceCode) {
-        this.priceCode = priceCode;
+        return priceCode.getPriceCode();
     }
 
     public String getTitle() {
@@ -66,17 +76,7 @@ public abstract class Video {
 
     public abstract int getRentedLimit();
 
-    double getCharge(double eachCharge, int daysRented, Rental rental) {
-        switch (rental.getVideo().getPriceCode()) {
-            case REGULAR:
-                eachCharge += 2;
-                if (daysRented > 2)
-                    eachCharge += (daysRented - 2) * 1.5;
-                break;
-            case NEW_RELEASE:
-                eachCharge = daysRented * 3;
-                break;
-        }
-        return eachCharge;
+    double getCharge(double eachCharge, int daysRented) {
+        return priceCode.getCharge(eachCharge, daysRented);
     }
 }

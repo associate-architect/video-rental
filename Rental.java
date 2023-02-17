@@ -60,7 +60,7 @@ public class Rental {
 	}
 
 	double calculateCharge(double eachCharge, int daysRented) {
-		return video.getCharge(eachCharge, daysRented, this);
+		return video.getCharge(eachCharge, daysRented);
 	}
 
 }
