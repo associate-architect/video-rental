@@ -45,7 +45,7 @@ public class Customer {
 			int eachPoint = 0 ;
 			int daysRented = 0;
 
-            daysRented = getDaysRented(each);
+            daysRented = each.getDaysRented();
             eachCharge = calculateCharge(each, eachCharge, daysRented);
             eachPoint = calculatePoint(each, eachPoint, daysRented);
 
@@ -93,19 +93,4 @@ public class Customer {
         }
         return eachCharge;
     }
-
-    private int getDaysRented(Rental each) {
-        int daysRented;
-        long diff;
-        if (each.getStatus() == 1) { // returned Video
-            diff = each.getReturnDate().getTime() - each.getRentDate().getTime();
-        } else { // not yet returned
-            diff = new Date().getTime() - each.getRentDate().getTime();
-        }
-        daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
-        return daysRented;
-    }
-
-
-
 }
