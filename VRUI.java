@@ -167,22 +167,23 @@ public class VRUI {
 		}
 	}
 
-	public void rentVideo() {
-		Customer foundCustomer = findCustomer();
-
-		if ( foundCustomer == null ) return ;
-
+	public Video findAvailableVideo(){
 		System.out.println("Enter video title to rent: ") ;
 		String videoTitle = scanner.next() ;
 
-		Video foundVideo = null ;
 		for ( Video video: videos ) {
 			if ( video.getTitle().equals(videoTitle) && video.isRented() == false ) {
-				foundVideo = video ;
-				break ;
+				return video;
 			}
 		}
+		return null;
+	}
 
+	public void rentVideo() {
+		Customer foundCustomer = findCustomer();
+		if ( foundCustomer == null ) return ;
+
+		Video foundVideo = findAvailableVideo();
 		if ( foundVideo == null ) return ;
 
 		Rental rental = new Rental(foundVideo) ;
