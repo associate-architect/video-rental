@@ -79,4 +79,18 @@ public abstract class Video {
     double getCharge(double eachCharge, int daysRented) {
         return priceCode.getCharge(eachCharge, daysRented);
     }
+
+    int getPoint(int eachPoint, int daysRented, Rental rental) {
+        eachPoint++;
+
+        eachPoint = getEachPoint(eachPoint);
+
+        if ( daysRented > rental.getDaysRentedLimit() )
+            eachPoint -= Math.min(eachPoint, getLateReturnPointPenalty()) ;
+        return eachPoint;
+    }
+
+    private int getEachPoint(int eachPoint) {
+        return priceCode.getEachPoint(eachPoint);
+    }
 }

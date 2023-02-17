@@ -46,7 +46,7 @@ public class Customer {
 
             daysRented = each.getDaysRented();
             eachCharge = each.calculateCharge(eachCharge, daysRented);
-            eachPoint = calculatePoint(each, eachPoint, daysRented);
+            eachPoint = each.calculatePoint(eachPoint, daysRented);
 
 			result += "\t" + each.getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
 					+ "\tPoint: " + eachPoint + "\n";
@@ -66,17 +66,5 @@ public class Customer {
 		return result ;
 	}
 
-
-	private int calculatePoint(Rental each, int eachPoint, int daysRented) {
-
-		eachPoint++;
-
-		if ((each.getVideo().getPriceCode() == Video.NEW_RELEASE) )
-			eachPoint++;
-
-		if ( daysRented > each.getDaysRentedLimit() )
-			eachPoint -= Math.min(eachPoint, each.getVideo().getLateReturnPointPenalty()) ;
-		return eachPoint;
-	}
 
 }

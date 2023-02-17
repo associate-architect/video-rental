@@ -63,4 +63,9 @@ public class Rental {
 		return video.getCharge(eachCharge, daysRented);
 	}
 
+	int calculatePoint(int eachPoint, int daysRented) {
+
+		return video.getPoint(eachPoint, daysRented, this);
+	}
+
 }

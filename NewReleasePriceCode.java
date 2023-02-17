@@ -9,4 +9,10 @@ public class NewReleasePriceCode extends PriceCode {
     public int getPriceCode() {
         return 2;
     }
+
+    @Override
+    public int getEachPoint(int eachPoint) {
+        eachPoint++;
+        return eachPoint;
+    }
 }

@@ -12,4 +12,9 @@ public class RegularPriceCode extends PriceCode {
     public int getPriceCode() {
         return 1;
     }
+
+    @Override
+    public int getEachPoint(int eachPoint) {
+        return eachPoint;
+    }
 }
