@@ -45,12 +45,17 @@ public class Rental {
 	public int getDaysRented() {
 		int daysRented;
 		if (getStatus() == 1) { // returned Video
-			long diff = returnDate.getTime() - rentDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+			daysRented = getRented(returnDate);
 		} else { // not yet returned
-			long diff = new Date().getTime() - rentDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+			daysRented = getRented(new Date());
 		}
+		return daysRented;
+}
+
+	private int getRented(Date x) {
+		int daysRented;
+		long diff = x.getTime() - rentDate.getTime();
+		daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 		return daysRented;
 	}
 }
