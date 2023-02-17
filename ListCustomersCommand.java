@@ -6,6 +6,6 @@ public class ListCustomersCommand extends Command {
 
     @Override
     void execute() {
-        ui.listVideos();
+        ui.listCustomers();
     }
 }
