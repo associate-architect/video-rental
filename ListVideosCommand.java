@@ -1,7 +1,6 @@
 public class ListVideosCommand extends Command {
-    private VRUI ui;
     public ListVideosCommand(VRUI ui) {
-        this.ui = ui;
+        super(ui);
     }
 
     @Override

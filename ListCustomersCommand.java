@@ -1,7 +1,6 @@
 public class ListCustomersCommand extends Command {
-    private VRUI ui;
     public ListCustomersCommand(VRUI ui) {
-        this.ui = ui;
+        super(ui);
     }
 
     @Override
